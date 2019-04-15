@@ -1,0 +1,22 @@
+{% extends "./layout.html" %}
+
+{% block title %}API - {{ api['name'] }}{% endblock %}
+
+{% block breadcrumb_nav %}
+<li><a href="{{ url_for('docs.index') }}">API LIST</a></li>
+<li><a href="{{ api['url'] }}">{{ api['name'] }}</a></li>
+{% endblock %}
+
+{% block page_header %}
+    <h1>{{ api['name'] }}</h1>
+    {% if 'description' in api %}<h4>{{ api['description'] }}</h4>{% endif %}
+{% endblock %}
+
+{% block content_area %}
+<pre>
+<b>Target:</b>{% if 'target' in api %}<span>{{ api.target }}</span>{% endif %}
+<b>Method:</b>{% if 'method' in api %}<span>{{ api.method }}</span>{% endif %}
+<b>Parameter:</b> {% if 'parameter' in api %}<span>{{ api.parameter }}</span>{% endif %}
+<b>Response:</b> {% if 'response' in api %}<span>{{ api.response }}</span>{% endif %}
+</pre>
+{% endblock %}
